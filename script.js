@@ -88,31 +88,78 @@ var upperCasedCharacters = [
   'Z'
 ];
 
+function isLengthInputValid(passwordInputLength) {
+  if (password < 8) {
+    return false;
+  }
+  if (passwordInputLength > 128) {
+    return false;
+  }
+
+  if (passwordInputLength >= 8 && passwordInputLength <= 128) {
+    return true;
+  }
+
+  return false;
+}
+
 // Function to prompt user for password options
 function getPasswordOptions() {
+  console.log("Get pass options");
 
+  const passwordLength = prompt(
+    " how long would you like the password to be? the password needs to me a minimum of 8 charators "
+  );
+  const passwordLengthAsNum = parseInt(passwordLength /*"10"*/, 10);
+
+  if (isLengthInputValid(passwordLengthAsNum)) {
+    //contione
+    /* ask 4 questions and then check if the user wants at least one of the options. if they select at least one then contuiene.
+  if they dont select any options alert the user and tell the to select at least one option, and then stop.
+  */
+    const isLowercaseinluded = confirm(" do you want to include lowercase");
+    const isUppercaseinluded = confirm(" do you want to include uppercase");
+    const isNumericinluded = confirm(" do you want to include numeric");
+    const isSpecialinluded = confirm(" do you want to include special char");
+
+    if (
+      isLowercaseinluded ||
+      isUppercaseinluded ||
+      isNumericinluded ||
+      isSpecialinluded === true
+    ) {
+      // cuntione to generate pass based on answers
+    } else {
+      alert("please chose at least one charater type");
+    }
+  } else {
+    alert(
+      " please input valid password lenght which is 8 or more charaters but less than 128"
+    );
+  }
+  console.log(passwordLength);
 }
 
 // Function for getting a random element from an array
-function getRandom(arr) {
-
-}
+function getRandom(arr) {}
 
 // Function to generate password with user input
 function generatePassword() {
-
+  console.log("generate password");
+  let finalPassword;
+  getPasswordOptions();
 }
 
-// Get references to the #generate element
-var generateBtn = document.querySelector('#generate');
+// Get references to the #generate element //function to generste using user input
+var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
-  var passwordText = document.querySelector('#password');
+  var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener('click', writePassword);
+generateBtn.addEventListener("click", writePassword);
