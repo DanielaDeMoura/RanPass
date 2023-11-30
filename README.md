@@ -27,6 +27,9 @@ Alternatively, you can clone this repository and run it on your machine:
    ```bash
    git clone https://github.com/danielademoura/RanPass.git
 
+   for ssh copy the below: 
+   git clone git@github.com:DanielaDeMoura/RanPass.git
+
 2. Open the index.html file in your preferred browser (Chrome, Brave, Edge, etc).
 
 ## How does this work?
